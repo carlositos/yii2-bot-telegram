@@ -355,6 +355,24 @@ class Telegram extends \yii\base\Component
     }
 
     /**
+     *   @var Array
+     *   sample
+     *   Yii::$app->telegram->editMessageText([
+     *       'chat_id' => '3343545121', //Optional
+     *       'message_id' => 13123, //Optional
+     *       'inline_message_id' => 'my alert',  //Optional
+     *       'reply_markup' => Type InlineKeyboardMarkup,  //Optional
+     *   ]);
+     *   Use this method to edit only the reply markup of messages.
+     * On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.
+     */
+    public function editMessageReplyMarkup(array $option = [])
+    {
+        $jsonResponse = $this->curl_call("https://api.telegram.org/bot" . $this->botToken . "/editMessageReplyMarkup", $option);
+        return json_decode($jsonResponse);
+    }
+
+    /**
     *   @var Array
     *   sample
     *   Yii::$app->telegram->editMessageText([
